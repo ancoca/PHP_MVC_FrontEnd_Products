@@ -1,0 +1,124 @@
+<?php
+  session_start();
+	include($_SERVER['DOCUMENT_ROOT'] . "/module/products/utils/utils_products.inc.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
+
+  //Si hay datos del formulario en el json enviado por el controlador de javascript
+	if(isset($_POST['create_products'])){
+		create_products();
+	}
+
+  //Validamos los datos correctamente
+  //Si los datos estan correctos, los guardamos y devolvemos un json con el resultado
+  //Silos datos no estan correctos, devolvemos el resultado y los errores en un json
+	function create_products(){
+		$jsondata = array();
+		$productsJSON = json_decode($_POST["create_products"], true);
+
+		$result = validate_products($productsJSON); //Validamos los datos
+
+		if (empty($_SESSION['result_image'])){ //Comprobamos si hay imagen en el dropzone, sino utilizamos la de por defecto
+			$_SESSION['result_image'] = array('resultado' => true, 'error' =>"", 'datos' => 'media/default-products.png');
+		}
+
+		$result_image = $_SESSION['result_image'];
+
+		if ($result['resultado'] && $result_image['resultado']) { //Guardamos los datos si el resultado es positivo
+				$arrArgument = array(
+					'barcode' => $result['datos']['barcode'],
+					'name' => $result['datos']['name'],
+					'image' => $result_image['datos'],
+					'explain' => $result['datos']['explain'],
+					'cost' => $result['datos']['cost'],
+					'stock' => $result['datos']['stock'],
+					'made_in_country' => $result['datos']['made_in_country'],
+					'made_in_province' => $result['datos']['made_in_province'],
+					'made_in_city' => $result['datos']['made_in_city'],
+					'category' => $result['datos']['category'],
+					'promotion_start' => $result['datos']['promotion_start'],
+					'promotion_end' => $result['datos']['promotion_end'],
+				);
+
+				$mensaje = "User has been successfully registered";
+
+				//redirigir a otra pagina con los datos de $arrArgument y $mensaje
+				$_SESSION['products'] = $arrArgument;
+				$_SESSION['msje'] = $mensaje;
+				$callback="index.php?module=products&view=result";
+
+				$jsondata["success"] = true;
+				$jsondata["redirect"] = $callback;
+				echo json_encode($jsondata);
+				exit;
+		} else {  //Devolvemos los errores si el resultado es negativo
+				//$error = $result['error'];
+				//$error_image = $result_image['error'];
+				$jsondata["success"] = false;
+				$jsondata["error"] = $result['error'];
+				$jsondata["error_image"] = $result_avatar['error'];
+
+				$jsondata["success_image"] = false;
+				if ($result_image['resultado']) {
+						$jsondata["success_image"] = true;
+						$jsondata["img_products"] = $result_avatar['datos'];
+				}
+				header('HTTP/1.0 400 Bad error');
+				echo json_encode($jsondata);
+				exit;
+		}
+	}
+
+  //Subir imagen en dropzone.js
+	if(isset($_GET["upload"]) && $_GET["upload"] == true) {
+		$result_image = upload_files();
+		$_SESSION['result_image'] = $result_image;
+	}
+
+  //Eliminar imagen en dropzone.js
+	if (isset($_GET["delete"]) && $_GET["delete"] == true) {
+		$_SESSION['result_image'] = array();
+		$result = remove_files();
+		if ($result === true) {
+			echo json_encode(array("res" => true));
+		} else {
+			echo json_encode(array("res" => false));
+		}
+	}
+
+  //Cerramos sesiones para evitar robo de datos
+	function close_session() {
+		unset($_SESSION['products']);
+		unset($_SESSION['msje']);
+		$_SESSION = array();
+		session_destroy();
+	}
+
+  //Recuperamos los datos del formulario antes de cerrar sesion
+	if (isset($_GET["load"]) && $_GET["load"] == true) {
+		$jsondata = array();
+		if (isset($_SESSION['products'])) {
+			$jsondata['products'] = $_SESSION['products'];
+		}
+		if (isset($_SESSION['msje'])) {
+			$jsondata['msje'] = $_SESSION['msje'];
+		}
+		close_session();
+		echo json_encode($jsondata);
+		exit;
+	}
+
+  //Si hay datos en la sesion los pintamos en el formulario
+  //Si no hay datos en la session, pintamos los datos por defecto
+	if (isset($_GET["load_data"]) && $_GET['load_data'] == true) {
+		$jsondata = array();
+
+		if (isset($_SESSION['products'])){
+			$jsondata['products'] = $_SESSION['products'];
+			echo json_encode($jsondata);
+			exit;
+		} else {
+			$jsondata['products'] = "";
+			echo json_encode($jsondata);
+			exit;
+		}
+	}
