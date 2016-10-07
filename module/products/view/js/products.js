@@ -131,8 +131,8 @@ $(document).ready(function () {
         $("#cost").val('');
         var inputStock = document.getElementsByClassName('stock');
         for (var i = 0; i < inputStock.length; i++) {
-          if (inputStock[i].val("true")) {
-            inputStock[i].checked = false;
+          if (i === 0) {
+            inputStock[i].checked = true;
           }
         }
         $("#made_in_country").val('select_country');
