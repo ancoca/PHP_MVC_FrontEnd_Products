@@ -413,10 +413,10 @@ function validate_products() {
     }, "json").fail(function (xhr){
       //console.log(xhr.responseJSON);
       if (xhr.responseJSON.error.barcode){ //Si la respuesta del controlador de PHP es negativa, pintamos los errores
-        $("#barcode").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.barcode + "</span>");
+        $("#e_barcode").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.barcode + "</span>");
       }
-      if (xhr. responseJSON.error.name){
-        $("#name").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.name + "</span>");
+      if (xhr.responseJSON.error.name){
+        $("#e_name").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.name + "</span>");
       }
       if (xhr.responseJSON.success_image) {
           if (xhr.responseJSON.img_products !== "/media/default-avatar.png") {
@@ -432,31 +432,31 @@ function validate_products() {
           $('.msg').text('Error Upload image!!').addClass('msg_error').animate({'right': '300px'}, 300);
       }
       if (xhr.responseJSON.error.explain){
-        $("#explain").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.explain + "</span>");
+        $("#e_explain").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.explain + "</span>");
       }
       if (xhr.responseJSON.error.cost){
-        $("#cost").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.cost + "</span>");
+        $("#e_cost").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.cost + "</span>");
       }
       if (xhr.responseJSON.error.stock){
-        $("#stock").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.stock + "</span>");
+        $("#e_stock").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.stock + "</span>");
       }
       if (xhr.responseJSON.error.made_in_country){
-        $("#made_in_country").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.made_in_country + "</span>");
+        $("#e_made_in_country").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.made_in_country + "</span>");
       }
       if (xhr.responseJSON.error.made_in_province){
-        $("#made_in_province").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.made_in_province + "</span>");
+        $("#e_made_in_province").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.made_in_province + "</span>");
       }
       if (xhr.responseJSON.error.made_in_city){
-        $("#made_in_city").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.made_in_city + "</span>");
+        $("#e_made_in_city").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.made_in_city + "</span>");
       }
       if (xhr.responseJSON.error.category){
-        $("#category").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.category + "</span>");
+        $("#e_category").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.category + "</span>");
       }
       if (xhr.responseJSON.error.promotion_start){
-        $("#promotion_start").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.promotion_start + "</span>");
+        $("#e_promotion_start").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.promotion_start + "</span>");
       }
       if (xhr.responseJSON.error.promotion_end){
-        $("#promotion_end").focus().after("<span class='error_javascript'" + xhr.responseJSON.console.error.promotion_end + "</span>");
+        $("#e_promotion_end").focus().after("<span class='error_javascript'>" + xhr.responseJSON.error.promotion_end + "</span>");
       }
     });
   }

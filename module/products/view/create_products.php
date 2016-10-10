@@ -19,18 +19,21 @@
 				<tr>
 					<td width="24%">Barcode</td>
 					<td width="76%"><input type="text" class="expand" name="barcode" id="barcode" value=""></td>
-          <div id="e_name"></div>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_barcode"></div></td>
+        </tr>
 
 				<!-- Name -->
 				<tr>
 					<td>Name</td>
-					<td><input type="text" class="expand" name="name" id="name" value="<?php
-					if (!isset($error['name'])) {
-                        echo $_POST ? $_POST['name'] : "";
-                    }
-					?>"></td>
+					<td><input type="text" class="expand" name="name" id="name" value=""></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_name"></div></td>
+        </tr>
 
 				<!-- Image -->
 				<tr>
@@ -45,26 +48,30 @@
               <div id="dropzone" class="dropzone"></div>
             </td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_image"></div></td>
+        </tr>
 
 				<!-- Explain -->
 				<tr>
 					<td>Explain</td>
-					<td><textarea class="expand" name="explain" id="explain" value="<?php
-					if (!isset($error['explain'])) {
-                        echo $_POST ? $_POST['explain'] : "";
-                    }
-					?>"></textarea></td>
+					<td><textarea class="expand" name="explain" id="explain" value=""></textarea></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_explain"></div></td>
+        </tr>
 
 				<!-- Cost -->
 				<tr>
 					<td>Cost</td>
-					<td><input type="text" class="expand" name="cost" id="cost" value="<?php
-					if (!isset($error['cost'])) {
-                        echo $_POST ? $_POST['cost'] : "";
-                    }
-					?>"></td>
+					<td><input type="text" class="expand" name="cost" id="cost" value=""></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_cost"></div></td>
+        </tr>
 
 				<!-- Stock -->
 				<tr>
@@ -73,6 +80,10 @@
 						<input name="stock" type="radio" class="stock" value=false> No
 					</td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_stock"></div></td>
+        </tr>
 
 				<!-- Made in country -->
 				<tr>
@@ -86,6 +97,10 @@
 						<option value="EE.UU.">Estados Unidos</option>
 					</select></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_made_in_country"></div></td>
+        </tr>
 
 				<!-- Made in province -->
 				<tr>
@@ -99,6 +114,10 @@
 						<option value="asturias">Asturias</option>
 					</select></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_made_in_province"></div></td>
+        </tr>
 
 				<!-- Made in city -->
 				<tr>
@@ -112,6 +131,10 @@
 						<option value="fontanars dels alforins">Fontanars dels alforins</option>
 					</select></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_made_in_city"></div></td>
+        </tr>
 
 				<!-- Category -->
 				<tr>
@@ -123,33 +146,33 @@
 						<input type="checkbox" name="category[]" class="category" value="cocina"> Cocina
 					</td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_category"></div></td>
+        </tr>
 
 				<!-- Promotion start -->
 				<tr>
 					<td>Promotion Start</td>
-					<td><input type="text" class="expand" name="promotion_start" id="promotion_start" value="<?php
-					if (!isset($error['promotion_start'])) {
-                        echo $_POST ? $_POST['promotion_start'] : "";
-                    }
-					?>"></td>
+					<td><input type="text" class="expand" name="promotion_start" id="promotion_start" value=""></td>
 				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_promotion_start"></div></td>
+        </tr>
 
 				<!-- Promotion end -->
 				<tr>
 					<td>Promotion End</td>
-					<td><input type="text" class="expand" name="promotion_end" id="promotion_end" value="<?php
-					if (!isset($error['promotion_end'])) {
-                        echo $_POST ? $_POST['promotion_end'] : "";
-                    }
-					?>"></td>
+					<td><input type="text" class="expand" name="promotion_end" id="promotion_end" value=""></td>
 				</tr>
-
-				<!-- Submit -->
-				<tr>
-					<td></td>
-					<td>&nbsp;</td>
-				</tr>
+        <tr>
+          <td width="24%"></td>
+          <td width="76%"><div id="e_promotion_end"></div></td>
+        </tr>
 			</table>
+
+			<!-- Submit -->
 			<button type="button" class="submit" name="SubmitProducts" id="SubmitProducts" value="Submit">Submit</button>
 		</form>
 	</div>
