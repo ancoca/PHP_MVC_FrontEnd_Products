@@ -779,35 +779,12 @@
 	/*****************************************************************************/
 
 	.error_javascript {
-		position: relative;
-		background: #d50000;
-		border: 4px solid #a30000;
+		border-radius: 50px 50px 50px 50px;
+		-moz-border-radius: 50px 50px 50px 50px;
+		-webkit-border-radius: 50px 50px 50px 50px;
+		border: 3px solid #ff0000;
+		background-color: #ee0000;
 		color: #ffffff;
-		padding: 5px 5px 5px 5px;
-	}
-
-	.error_javascript:after, .error_javascript:before {
-		bottom: 100%;
-		left: 50%;
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
-	}
-
-	.error_javascript:after {
-		border-color: rgba(213, 0, 0, 0);
-		border-bottom-color: #d50000;
-		border-width: 10px;
-		margin-left: -10px;
-	}
-	.error_javascript:before {
-		border-color: rgba(163, 0, 0, 0);
-		border-bottom-color: #a30000;
-		border-width: 16px;
-		margin-left: -16px;
 	}
 
 	.error_php {
