@@ -2,6 +2,7 @@
   session_start();
 	include($_SERVER['DOCUMENT_ROOT'] . "/module/products/utils/utils_products.inc.php");
 	include($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
 
   //Si hay datos del formulario en el json enviado por el controlador de javascript
 	if(isset($_POST['create_products'])){
@@ -39,7 +40,17 @@
 					'promotion_end' => $result['datos']['promotion_end'],
 				);
 
-				$mensaje = "User has been successfully registered";
+        /////////////////insert into BD////////////////////////
+        $arrValue = false;
+        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+        $arrValue = loadModel($path_model, "products_model", "create_products", $arrArgument);
+        //echo json_encode($arrValue);
+        //die();
+
+        if ($arrValue)
+            $mensaje = "Su registro se ha efectuado correctamente, para finalizar compruebe que ha recibido un correo de validacion y siga sus instrucciones";
+        else
+            $mensaje = "No se ha podido realizar su alta. Intentelo mas tarde";
 
 				//redirigir a otra pagina con los datos de $arrArgument y $mensaje
 				$_SESSION['products'] = $arrArgument;
@@ -55,7 +66,7 @@
 				//$error_image = $result_image['error'];
 				$jsondata["success"] = false;
 				$jsondata["error"] = $result['error'];
-				$jsondata["error_image"] = $result_avatar['error'];
+				$jsondata["error_image"] = $result_image['error'];
 
 				$jsondata["success_image"] = false;
 				if ($result_image['resultado']) {

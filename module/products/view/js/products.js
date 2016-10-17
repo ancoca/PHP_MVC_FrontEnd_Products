@@ -221,14 +221,14 @@ $(document).ready(function () {
                             element.parentNode.removeChild(file.previewElement);
                             //alert("Imagen eliminada: " + name);
                         } else {
-                            false;
+                            return false;
                         }
                     } else { //json.res == false, elimino la imagen también
                         var element;
                         if ((element = file.previewElement) !== null) {
                             element.parentNode.removeChild(file.previewElement);
                         } else {
-                            false;
+                            return false;
                         }
                     }
                 }
