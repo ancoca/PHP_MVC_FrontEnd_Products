@@ -89,12 +89,6 @@
 				<tr>
 					<td>Made in</td>
 					<td><select name="made_in_country" id="made_in_country">
-						<option value="select_country">Select country</option>
-						<option value="spain">España</option>
-						<option value="france">Francia</option>
-						<option value="united_kingdown">Reino Unido</option>
-						<option value="china">China</option>
-						<option value="EE.UU.">Estados Unidos</option>
 					</select></td>
 				</tr>
         <tr>
@@ -106,12 +100,6 @@
 				<tr>
 					<td></td>
 					<td><select name="made_in_province" id="made_in_province">
-						<option value="select_province">Select province</option>
-						<option value="valencia">Valencia</option>
-						<option value="castellon">Castellon</option>
-						<option value="alicante">Alicante</option>
-						<option value="madrid">Madrid</option>
-						<option value="asturias">Asturias</option>
 					</select></td>
 				</tr>
         <tr>
@@ -123,12 +111,6 @@
 				<tr>
 					<td></td>
 					<td><select name="made_in_city" id="made_in_city">
-						<option value="select_city">Select city</option>
-						<option value="ontinyent">Ontinyent</option>
-						<option value="bocairent">Bocairent</option>
-						<option value="valencia">Valencia</option>
-						<option value="villena">Villena</option>
-						<option value="fontanars dels alforins">Fontanars dels alforins</option>
 					</select></td>
 				</tr>
         <tr>

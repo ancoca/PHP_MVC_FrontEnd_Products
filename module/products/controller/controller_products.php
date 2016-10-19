@@ -133,3 +133,60 @@
 			exit;
 		}
 	}
+
+	/////////////////////////////////////////////////// load_pais
+	if(  (isset($_GET["load_pais"])) && ($_GET["load_pais"] == true)  ){
+		$json = array();
+
+    $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
+
+    $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+    $arrValue = loadModel($path_model, "products_model", "obtain_paises", $url);
+
+		if($json){
+			echo $json;
+			exit;
+		}else{
+			$json = "error";
+			echo $json;
+			exit;
+		}
+	}
+
+	/////////////////////////////////////////////////// load_provincias
+	if(  (isset($_GET["load_provincias"])) && ($_GET["load_provincias"] == true)  ){
+		$jsondata = array();
+    $json = array();
+
+    $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+    $arrValue = loadModel($path_model, "products_model", "obtain_provincias");
+
+		if($json){
+			$jsondata["provincias"] = $json;
+			echo json_encode($jsondata);
+			exit;
+		}else{
+			$jsondata["provincias"] = "error";
+			echo json_encode($jsondata);
+			exit;
+		}
+	}
+
+	/////////////////////////////////////////////////// load_poblaciones
+	if(  isset($_POST['idPoblac']) ){
+	    $jsondata = array();
+      $json = array();
+
+      $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+      $arrValue = loadModel($path_model, "products_model", "obtain_poblaciones", $_POST['idPoblac']);
+
+		if($json){
+			$jsondata["poblaciones"] = $json;
+			echo json_encode($jsondata);
+			exit;
+		}else{
+			$jsondata["poblaciones"] = "error";
+			echo json_encode($jsondata);
+			exit;
+		}
+  }
