@@ -1,5 +1,5 @@
 <section >
-    <div class="container">
+    <div id="wrapper3">
         <div id="list_prod" class="row text-center pad-row">
             <ol class="breadcrumb">
                 <li class="active" >Products</li>
@@ -14,7 +14,7 @@
                     //echo $productos['id'] . " " . $productos['nombre'] . "</br>";
                     //echo $productos['descripcion'] . " " . $productos['precio'] . "</br>";
                     ?>
-                    <a id="prod" href="index.php?module=products&view=controller&idProduct=<?php echo $product['barcode'] ?>" >
+                    <a id="prod" href="index.php?module=products_frontend&idProduct=<?php echo $product['barcode'] ?>" >
                         <img class="prodImg" src=<?php echo $product['image'] ?> alt="product" >
                         <p><?php echo $product['name'] ?></p>
                         <p id="p2"><?php echo $product['cost'] ?>€</p>

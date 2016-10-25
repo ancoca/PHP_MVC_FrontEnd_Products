@@ -19,6 +19,9 @@
                     break;
             }
             break;
+        case "products_frontend";
+          include("module/products_frontend/controller/controller_products_frontend.php");
+          break;
         default;
             include("module/home/controller/controller_home.php");
             break;

@@ -18,7 +18,7 @@
         } else {
             die($model_name . ' Model Not Found under Model Folder');
         }
-  }
+    }
 
   function loadView($rutaVista, $templateName, $arrPassValue = '') {
   		$view_path = $rutaVista . $templateName;

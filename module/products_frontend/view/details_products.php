@@ -1,8 +1,8 @@
 <section >
-    <div class="container">
+    <div id="wrapper3">
         <div id="details_prod" class="row text-center pad-row">
             <ol class="breadcrumb">
-                <li><a href="index.php?module=products">Products</a></li>
+                <li><a href="index.php?module=products_frontend">Products</a></li>
                 <li class="active">Details Product</li>
             </ol>
             <br>
@@ -26,7 +26,7 @@
                             <strong>Description: <br/></strong><?php echo $arrData['explicacion'] ?>
                         </p>
                         <p>
-                            <strong>Stock:</strong> <?php if ($arrData['titration'] == 1){
+                            <strong>Stock:</strong> <?php if ($arrData['stock'] == 1){
                                                             echo "Si";
                                                           } else {
                                                             echo "No";
