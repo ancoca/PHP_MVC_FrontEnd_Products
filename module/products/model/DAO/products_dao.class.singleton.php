@@ -62,6 +62,20 @@ class productsDAO {
         return $db->ejecutar($sql);
     }
 
+    public function list_products_DAO($db) {
+        $sql = "SELECT * FROM products";
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function details_products_DAO($db,$id) {
+        $sql = "SELECT * FROM products WHERE barcode=".$id;
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
     public function obtain_paises_DAO($url) {
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -77,7 +91,7 @@ class productsDAO {
         $json = array();
         $tmp = array();
 
-        $provincias = simplexml_load_file("resources/provinciasypoblaciones.xml");
+        $provincias = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/resources/provinciasypoblaciones.xml");
         $result = $provincias->xpath("/lista/provincia/nombre | /lista/provincia/@id");
         for ($i=0; $i<count($result); $i+=2) {
           $e=$i+1;
@@ -96,7 +110,7 @@ class productsDAO {
         $tmp = array();
 
         $filter = (string)$arrArgument;
-        $xml = simplexml_load_file('resources/provinciasypoblaciones.xml');
+        $xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . '/resources/provinciasypoblaciones.xml');
         $result = $xml->xpath("/lista/provincia[@id='$filter']/localidades");
 
         for ($i=0; $i<count($result[0]); $i++) {

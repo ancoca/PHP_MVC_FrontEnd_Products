@@ -4,6 +4,29 @@
 	include($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
 	include($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
 
+  if ($_GET["idProduct"]) {
+      $id = $_GET["idProduct"];
+      $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+      $arrValue = loadModel($path_model, "products_model", "details_products",$id);
+
+      if ($arrValue[0]) {
+          loadView('module/products/view/', 'details_products.php', $arrValue[0]);
+      } else {
+          $message = "NOT FOUND PRODUCT";
+          loadView('view/inc/', '404.php', $message);
+      }
+  } else {
+      $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
+      $arrValue = loadModel($path_model, "products_model", "list_products", "");
+
+      if ($arrValue) {
+          loadView('module/products/view/', 'list_products.php', $arrValue);
+      } else {
+          $message = "NOT PRODUCTS";
+          loadView('view/inc/', '404.php', $message);
+      }
+  }
+
   //Si hay datos del formulario en el json enviado por el controlador de javascript
 	if(isset($_POST['create_products'])){
 		create_products();
@@ -159,7 +182,7 @@
     $json = array();
 
     $path_model = $_SERVER['DOCUMENT_ROOT'] . '/module/products/model/model/';
-    $arrValue = loadModel($path_model, "products_model", "obtain_provincias");
+    $arrValue = loadModel($path_model, "products_model", "obtain_provincias", "");
 
 		if($json){
 			$jsondata["provincias"] = $json;

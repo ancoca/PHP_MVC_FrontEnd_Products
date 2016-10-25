@@ -18,4 +18,22 @@
         } else {
             die($model_name . ' Model Not Found under Model Folder');
         }
-    }
+  }
+
+  function loadView($rutaVista, $templateName, $arrPassValue = '') {
+  		$view_path = $rutaVista . $templateName;
+  		$arrData = '';
+
+  		if (file_exists($view_path)) {
+  			if (isset($arrPassValue))
+  				$arrData = $arrPassValue;
+  			include_once($view_path);
+  		} else {
+  			//die($templateName . ' Template Not Found under View Folder');
+
+  			$message = "NO TEMPLATE FOUND";
+  			$arrData = $message;
+  			require_once 'view/inc/404.php';
+  			die();
+  		}
+  }

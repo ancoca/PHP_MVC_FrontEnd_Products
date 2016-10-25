@@ -25,6 +25,14 @@ class products_model {
         return $this->bll->create_products_BLL($arrArgument);
     }
 
+    public function list_products() {
+        return $this->bll->list_products_BLL();
+    }
+
+    public function details_products($id) {
+        return $this->bll->details_products_BLL($id);
+    }
+
     public function obtain_paises($url) {
         return $this->bll->obtain_paises_BLL($url);
     }

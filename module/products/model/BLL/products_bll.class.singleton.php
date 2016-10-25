@@ -28,8 +28,12 @@ class products_bll {
         return $this->dao->create_products_DAO($this->db, $arrArgument);
     }
 
-    public function create_user_BLL($arrArgument) {
-        return $this->dao->create_user_DAO($this->db, $arrArgument);
+    public function list_products_BLL() {
+        return $this->dao->list_products_DAO($this->db);
+    }
+
+    public function details_products_BLL($id) {
+        return $this->dao->details_products_DAO($this->db,$id);
     }
 
     public function obtain_paises_BLL($url) {
@@ -43,5 +47,5 @@ class products_bll {
     public function obtain_poblaciones_BLL($arrArgument) {
         return $this->dao->obtain_poblaciones_DAO($arrArgument);
     }
-    
+
 }
