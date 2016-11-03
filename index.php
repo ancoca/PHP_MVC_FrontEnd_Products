@@ -3,14 +3,14 @@
 	include("view/inc/top.php");
 ?>
 
-<!-- Menu -->
-<?php
-	include("view/inc/menu.php");
-?>
-
 <!-- Header -->
 <?php
 	include("view/inc/header.php");
+?>
+
+<!-- Menu -->
+<?php
+	include("view/inc/menu.php");
 ?>
 
 <!-- Body -->

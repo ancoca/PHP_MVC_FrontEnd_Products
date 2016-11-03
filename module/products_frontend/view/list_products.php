@@ -1,28 +1,42 @@
-<section >
-    <div id="wrapper3">
-        <div id="list_prod" class="row text-center pad-row">
-            <ol class="breadcrumb">
-                <li class="active" >Products</li>
-            </ol>
-            <br>
-            <br>
-            <br>
-            <br>
-            <?php
-            if (isset($arrData) && !empty($arrData)) {
-                foreach ($arrData as $product) {
-                    //echo $productos['id'] . " " . $productos['nombre'] . "</br>";
-                    //echo $productos['descripcion'] . " " . $productos['precio'] . "</br>";
-                    ?>
-                    <a id="prod" href="index.php?module=products_frontend&idProduct=<?php echo $product['barcode'] ?>" >
-                        <img class="prodImg" src=<?php echo $product['image'] ?> alt="product" >
-                        <p><?php echo $product['name'] ?></p>
-                        <p id="p2"><?php echo $product['cost'] ?>€</p>
-                    </a>
-                    <?php
-                }
-            }
-            ?>
+<script type="text/javascript" src="module/products_frontend/view/js/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="module/products_frontend/view/js/list_products.js" ></script>
+
+<div id="results"></div>
+
+<center id="page">
+    <div class="pagination"></div>
+</center>
+
+<!-- modal window details_product -->
+<section id="product">
+
+    <div id="details_prod" hidden>
+
+        <!--<ol class="breadcrumb">
+            <li><a href="index.php?module=products">Products</a></li>
+            <li class="active">Details Product</li>
+        </ol>
+        <br>
+        <br>-->
+        <div id="details">
+            <div id="img_prod" class="prodImg"></div>
+
+            <div id="container">
+
+                <h4> <strong><div id="name_prod"></div></strong> </h4>
+                <br />
+                <p>
+                <div id="description_prod"></div>
+                </p>
+                <p>
+                <div id="titration_prod"></div>
+                </p>
+                <h2> <strong><div id="price_prod"></div></strong> </h5>
+
+            </div>
+
         </div>
+
     </div>
 </section>
+</div>

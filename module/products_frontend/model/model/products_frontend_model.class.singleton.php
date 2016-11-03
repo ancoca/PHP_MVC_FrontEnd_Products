@@ -1,7 +1,7 @@
 <?php
 
-$path = $_SERVER['DOCUMENT_ROOT'] . '/';
-define('SITE_ROOT', $path);
+//$path = $_SERVER['DOCUMENT_ROOT'] . '/';
+//define('SITE_ROOT', $path);
 define('MODEL_PATH', SITE_ROOT . 'model/');
 require(SITE_ROOT . "module/products_frontend/model/BLL/products_frontend_bll.class.singleton.php");
 
@@ -27,6 +27,14 @@ class products_frontend_model {
 
     public function details_products($id) {
         return $this->bll->details_products_BLL($id);
+    }
+
+    public function page_products($arrArgument) {
+        return $this->bll->page_products_BLL($arrArgument);
+    }
+
+    public function total_products() {
+        return $this->bll->total_products_BLL();
     }
 
 }

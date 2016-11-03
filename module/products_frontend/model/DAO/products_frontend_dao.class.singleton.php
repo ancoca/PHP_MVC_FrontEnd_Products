@@ -27,4 +27,21 @@ class products_frontendDAO {
         return $db->listar($stmt);
 
     }
+
+    public function page_products_DAO($db,$arrArgument) {
+        $position = $arrArgument['position'];
+        $item_per_page = $arrArgument['item_per_page'];
+        $sql = "SELECT * FROM products ORDER BY barcode ASC LIMIT ".$position." , ".$item_per_page;
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function total_products_DAO($db) {
+        $sql = "SELECT COUNT(*) as total FROM products";
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
 }

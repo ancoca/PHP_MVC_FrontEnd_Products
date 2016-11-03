@@ -55,7 +55,7 @@
 				//redirigir a otra pagina con los datos de $arrArgument y $mensaje
 				$_SESSION['products'] = $arrArgument;
 				$_SESSION['msje'] = $mensaje;
-				$callback="index.php?module=products&view=result";
+				$callback="index.php?module=Products&view=result";
 
 				$jsondata["success"] = true;
 				$jsondata["redirect"] = $callback;

@@ -32,4 +32,12 @@ class products_frontend_bll {
         return $this->dao->details_products_DAO($this->db,$id);
     }
 
+    public function page_products_BLL($arrArgument) {
+        return $this->dao->page_products_DAO($this->db,$arrArgument);
+    }
+
+    public function total_products_BLL() {
+        return $this->dao->total_products_DAO($this->db);
+    }
+
 }

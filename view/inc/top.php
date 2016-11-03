@@ -12,8 +12,9 @@ Released   : 20130919
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <link rel="shortcut icon" href="view/images/logo_GameBets.png" type="image/png">
+    <title>GameBets | <?php echo $_GET['module'] ?></title>
+    <meta charset="UTF-8">
     <meta name="keywords" content="" />
     <meta name="description" content="" />
 
@@ -24,13 +25,22 @@ Released   : 20130919
     <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
     <!-- JQUERY datepicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0-rc.2/jquery-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0-rc.2/jquery-ui.js"></script>
 
 </head>
 <body>
 <?php
+  $_SESSION['module'] = "";
   $_SESSION['result_image'] = array();
 	include("utils/utils.inc.php");
+
+  if (PRODUCTION) { //we are in production
+      ini_set('display_errors', '1');
+      ini_set('error_reporting', E_ERROR | E_WARNING | E_NOTICE); //error_reporting(E_ALL) ;
+  } else {
+      ini_set('display_errors', '0');
+      ini_set('error_reporting', '0'); //error_reporting(0);
+  }
 ?>

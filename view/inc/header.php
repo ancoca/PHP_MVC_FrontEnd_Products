@@ -1,11 +1,5 @@
-<div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<h1><a href="index.php">GameBets</a></h1>
-			<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
-		</div>
+<div id="header" class="container">
+	<div id="logo">
+		<a href="index.php"><img src="view/images/logo_GameBets.png" id="image_logo"></a>
 	</div>
 </div>
-
-
-

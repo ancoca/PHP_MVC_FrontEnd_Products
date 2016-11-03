@@ -76,7 +76,7 @@
 				<!-- Stock -->
 				<tr>
 					<td>Stock </td>
-					<td><input name="stock" type="radio" class="stock" value=true checked> Yes
+					<td class="left"><input name="stock" type="radio" class="stock" value=true checked> Yes
 						<input name="stock" type="radio" class="stock" value=false> No
 					</td>
 				</tr>
@@ -88,7 +88,7 @@
 				<!-- Made in country -->
 				<tr>
 					<td>Made in</td>
-					<td><select name="made_in_country" id="made_in_country">
+					<td><select name="made_in_country" id="made_in_country" class="expand">
 					</select></td>
 				</tr>
         <tr>
@@ -99,7 +99,7 @@
 				<!-- Made in province -->
 				<tr>
 					<td></td>
-					<td><select name="made_in_province" id="made_in_province">
+					<td><select name="made_in_province" id="made_in_province" class="expand">
 					</select></td>
 				</tr>
         <tr>
@@ -110,7 +110,7 @@
 				<!-- Made in city -->
 				<tr>
 					<td></td>
-					<td><select name="made_in_city" id="made_in_city">
+					<td><select name="made_in_city" id="made_in_city" class="expand">
 					</select></td>
 				</tr>
         <tr>
@@ -121,7 +121,7 @@
 				<!-- Category -->
 				<tr>
 					<td>Category</td>
-					<td>
+					<td class="left">
 						<input type="checkbox" name="category[]" class="category" value="electrodomesticos"> Electrodomesticos <br/>
 						<input type="checkbox" name="category[]" class="category" value="informatica"> Informatica <br/>
 						<input type="checkbox" name="category[]" class="category" value="aire acondicionado"> Aire acondicionado <br/>

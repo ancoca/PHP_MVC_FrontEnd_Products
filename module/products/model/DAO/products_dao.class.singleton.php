@@ -96,7 +96,7 @@ class productsDAO {
         $tmp = array();
 
         $filter = (string)$arrArgument;
-        $xml = simplexml_load_file('resources/provinciasypoblaciones.xml');
+        $xml = simplexml_load_file("resources/provinciasypoblaciones.xml");
         $result = $xml->xpath("/lista/provincia[@id='$filter']/localidades");
 
         for ($i=0; $i<count($result[0]); $i++) {

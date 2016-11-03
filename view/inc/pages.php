@@ -1,9 +1,9 @@
 <?php
     switch($_GET['module']) {
-        case "home";
+        case "Home";
             include("module/home/controller/controller_home.php");
             break;
-        case "products";
+        case "Products";
             switch($_GET['view']){
                 case "controller";
                     include("module/products/controller/controller_products.php");
@@ -19,9 +19,19 @@
                     break;
             }
             break;
-        case "products_frontend";
-          include("module/products_frontend/controller/controller_products_frontend.php");
-          break;
+        case "List_Products";
+            switch($_GET['view']){
+              case "controller";
+                  include("module/products_frontend/controller/controller_products_frontend.php");
+                  break;
+              case "list";
+                  include("module/products_frontend/view/list_products.php");
+                  break;
+              default;
+                  include("module/products_frontend/view/list_products.php");
+                  break;
+            }
+            break;
         default;
             include("module/home/controller/controller_home.php");
             break;
