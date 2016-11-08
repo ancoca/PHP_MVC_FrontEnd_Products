@@ -7,7 +7,7 @@
             $modelClass = $model_name;
 
             if (!method_exists($modelClass, $function)){
-                die($function . ' function not found in Model ' . $model_name);
+                throw new Exception();
             }
 
             $obj = $modelClass::getInstance();
@@ -16,7 +16,7 @@
                 return $obj->$function($arrArgument);
             }
         } else {
-            die($model_name . ' Model Not Found under Model Folder');
+            throw new Exception();
         }
     }
 
@@ -25,15 +25,24 @@
   		$arrData = '';
 
   		if (file_exists($view_path)) {
-  			if (isset($arrPassValue))
-  				$arrData = $arrPassValue;
-  			include_once($view_path);
+    			if (isset($arrPassValue))
+    				  $arrData = $arrPassValue;
+    			include_once($view_path);
   		} else {
-  			//die($templateName . ' Template Not Found under View Folder');
+          $result = filter_num_int($rutaVista);
+          if ($result['resultado']) {
+              $rutaVista = $result['datos'];
+          } else {
+              $rutaVista = http_response_code();
+          }
 
-  			$message = "NO TEMPLATE FOUND";
-  			$arrData = $message;
-  			require_once 'view/inc/404.php';
-  			die();
+          $log = Log::getInstance();
+          $log->add_log_general("error loadView general", $_GET['module'], "response " . $rutaVista); //$text, $controller, $function
+          $log->add_log_products("error loadView general", "", $_GET['module'], "response " . $rutaVista); //$msg, $username = "", $controller, $function
+
+          $result = response_code($rutaVista);
+          $arrData = $result;
+          require_once 'view/inc/error.php';
+          //exit();
   		}
   }

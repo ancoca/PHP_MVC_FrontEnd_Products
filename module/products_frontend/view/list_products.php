@@ -1,10 +1,29 @@
 <script type="text/javascript" src="module/products_frontend/view/js/jquery.bootpag.min.js"></script>
 <script type="text/javascript" src="module/products_frontend/view/js/list_products.js" ></script>
 
-<div id="results"></div>
+<div id="wrapper1">
+  <div id="welcome" class="container">
+    <div class="title">
+      <h2>Products</h2>
+    </div>
+  </div>
+</div>
 
-<center id="page">
-    <div class="pagination"></div>
+<div id="wrapper3">
+<center style="margin-top: 2em;">
+<form name="search_prod" id="search_prod" class="search_prod">
+    <input type="text" value="" placeholder="Search Product ..." class="input_search" id="keyword" list="datalist">
+    <!-- <div id="results_keyword"></div> -->
+    <input name="Submit" id="Submit" class="button_search" type="button" />
+
+</form>
+</center>
+
+<div id="results"></div>
+</div>
+
+<center>
+    <div class="pagination_prods"></div>
 </center>
 
 <!-- modal window details_product -->

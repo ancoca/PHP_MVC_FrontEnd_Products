@@ -91,20 +91,24 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
     switch ($code) {
         case 0:
             paint_template_error($message);
-            die();
+            exit;
             break;
         case 1:
-            header($http, true, $num_http);
-            loadView();
+            //header($http, true, $num_http);
+            loadView($num_http);
             break;
         case 2:
             $log = Log::getInstance();
             $log->add_log_general($message, "", "response " . http_response_code()); //$text, $controller, $function
-            $log->add_log_user($message, "", "", "response " . http_response_code()); //$msg, $username = "", $controller, $function
+            $log->add_log_products($message, "", "", "response " . http_response_code()); //$msg, $username = "", $controller, $function
 
             $jsondata["error"] = $message;
-            header($http, true, $num_http);
+            //header($http, true, $num_http);
             echo json_encode($jsondata);
+            exit;
+            break;
+        case 3:
+            paint_template_search($message);
             exit;
             break;
     }

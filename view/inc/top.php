@@ -13,7 +13,12 @@ Released   : 20130919
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="shortcut icon" href="view/images/logo_GameBets.png" type="image/png">
-    <title>GameBets | <?php echo $_GET['module'] ?></title>
+    <title>GameBets | <?php if ($_GET['module']){
+                                echo $_GET['module'];
+                            } else {
+                                echo "HOME";
+                            } ?>
+    </title>
     <meta charset="UTF-8">
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -35,6 +40,7 @@ Released   : 20130919
   $_SESSION['module'] = "";
   $_SESSION['result_image'] = array();
 	include("utils/utils.inc.php");
+  include("paths.php");
 
   if (PRODUCTION) { //we are in production
       ini_set('display_errors', '1');
