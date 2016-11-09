@@ -94,7 +94,8 @@ function count_product(keyword) {
         var num_products = json.num_products;
         alert("num_products: " + num_products);
 
-        if (num_products === 0){
+        console.log(num_products);
+        if (num_products == 0){
             $("#results").load("module/products_frontend/controller/controller_products_frontend.php?view_error=false"); //view_error=false
             $('.pagination_prods').html('');
             reset();
