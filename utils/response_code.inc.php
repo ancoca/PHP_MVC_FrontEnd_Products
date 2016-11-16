@@ -94,7 +94,6 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
             exit;
             break;
         case 1:
-            //header($http, true, $num_http);
             loadView($num_http);
             break;
         case 2:
@@ -103,7 +102,6 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
             $log->add_log_products($message, "", "", "response " . http_response_code()); //$msg, $username = "", $controller, $function
 
             $jsondata["error"] = $message;
-            //header($http, true, $num_http);
             echo json_encode($jsondata);
             exit;
             break;

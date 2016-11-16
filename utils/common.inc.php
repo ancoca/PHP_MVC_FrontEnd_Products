@@ -1,15 +1,15 @@
 <?php
     function loadModel($model_path, $model_name, $function, $arrArgument) {
         $model = $model_path . $model_name . '.class.singleton.php';
-
         if (file_exists($model)) {
             include_once($model);
+
             $modelClass = $model_name;
 
             if (!method_exists($modelClass, $function)){
                 throw new Exception();
             }
-
+            
             $obj = $modelClass::getInstance();
 
             if (isset($arrArgument)) {
@@ -42,7 +42,7 @@
 
           $result = response_code($rutaVista);
           $arrData = $result;
-          require_once 'view/inc/error.php';
+          require_once (INC_PATH . 'error.php');
           //exit();
   		}
   }

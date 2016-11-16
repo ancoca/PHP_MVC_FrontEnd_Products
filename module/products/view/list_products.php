@@ -1,5 +1,5 @@
-<script type="text/javascript" src="module/products_frontend/view/js/jquery.bootpag.min.js"></script>
-<script type="text/javascript" src="module/products_frontend/view/js/list_products.js" ></script>
+<script type="text/javascript" src="module/products/view/js/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="module/products/view/js/list_products.js" ></script>
 
 <div id="wrapper1">
   <div id="welcome" class="container">

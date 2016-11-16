@@ -7,6 +7,9 @@ class Log {
 
     public function __construct() {
         $this->path = GENERAL_LOG_DIR;
+  			if(!file_exists(GENERAL_LOG_DIR)){
+  				mkdir(GENERAL_LOG_DIR, 0777);
+  			}
     }
 
     public static function getInstance() {

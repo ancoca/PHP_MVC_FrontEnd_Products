@@ -1,7 +1,7 @@
 function load_users_ajax() {
     $.ajax({
         type: 'GET',
-        url: "module/products/controller/controller_products.php?load=true",
+        url: "index.php?module=products&function=load_result_products&load=true",
         //dataType: 'json',
         async: false
     }).success(function (data) {
@@ -18,7 +18,7 @@ function load_users_ajax() {
 
 ////////////////////////////////////////////////////////////////
 function load_users_get_v1() {
-    $.get("module/products/controller/controller_products.php?load=true", function (data, status) {
+    $.get("index.php?module=products&function=load_result_products&load=true", function (data, status) {
         var json = JSON.parse(data);
         //$( "#content" ).html( json.msje );
         //alert("Data: " + json.user.usuario + "\nStatus: " + status);
@@ -29,9 +29,9 @@ function load_users_get_v1() {
 
 ////////////////////////////////////////////////////////////////
 function load_users_get_v2() {
-    var jqxhr = $.get("module/products/controller/controller_products.php?load=true", function (data) {
+    var jqxhr = $.get("index.php?module=products&function=load_result_products&load=true", function (data) {
         var json = JSON.parse(data);
-        //console.log(json.msje);
+        //console.log(json);
         mostrar_products(json);
         //alert( "success" );
     }).done(function () {
@@ -54,6 +54,7 @@ $(document).ready(function () {
 });
 
 function mostrar_products(data) {
+  console.log(data);
   var content = document.getElementById("content");
   var div_products = document.createElement("div");
   var parrafo = document.createElement("p");

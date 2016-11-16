@@ -155,7 +155,7 @@ $("#made_in_province").change(function() {
 });
 
   //Control de seguridad para evitar que al volver atrás de la pantalla results a create, no nos imprima los datos
-  $.get("module/products/controller/controller_products.php?load_data=true",
+  $.get("index.php?module=products&function=load_data_products&load_data=true",
     function (response) {
       //alert(response.user);
       if (response.products === "") {
@@ -211,7 +211,7 @@ $("#made_in_province").change(function() {
 
 	//Dropzone function
     $("#dropzone").dropzone({
-        url: "module/products/controller/controller_products.php?upload=true",
+        url: "index.php?module=products&function=upload_image_products&upload=true",
         addRemoveLinks: true,
         maxFileSize: 1000,
         dictResponseError: "Ha ocurrido un error en el server",
@@ -239,7 +239,7 @@ $("#made_in_province").change(function() {
             var name = file.name;
             $.ajax({
                 type: "POST",
-                url: "module/products/controller/controller_products.php?delete=true",
+                url: "index.php?module=products&function=delete_image_products&delete=true",
                 data: "filename=" + name,
                 success: function (data) {
                     //console.log(data);
@@ -266,7 +266,7 @@ $("#made_in_province").change(function() {
                         }
                     }
                 }
-            });
+            })
         }
     });
 
@@ -476,10 +476,10 @@ function validate_products() {
     var data_products_JSON = JSON.stringify(data);
 
     //Le enviamos el JSON al Controllador de PHP
-    $.post('module/products/controller/controller_products.php',
+    $.post('index.php?module=products&function=create_products',
             {create_products : data_products_JSON},
     function (response) { //Si la respuesta del controlador de PHP es positiva
-      //console.log(response);
+      console.log(response);
       if (response.success) {
         window.location.href =response.redirect;
       }
@@ -550,7 +550,7 @@ function validate_pais(pais) {
     }
     if (pais.length > 0) {
         var regexp = /^[a-zA-Z]*$/;
-        console.log(pais);
+        //console.log(pais);
         return regexp.test(pais);
     }
     return false;
@@ -606,13 +606,13 @@ function load_countries_v2(cad) {
 }
 
 function load_countries_v1() {
-    $.get( "module/products/controller/controller_products.php?load_pais=true",
+    $.get( "index.php?module=products&function=load_pais_products&load_pais=true",
         function( response ) {
             //console.log(response);
             if(response === 'error'){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{
-                load_countries_v2("module/products/controller/controller_products.php?load_pais=true"); //oorsprong.org
+                load_countries_v2("index.php?module=products&function=load_pais_products&load_pais=true"); //oorsprong.org
             }
     }).fail(function(response) {
         load_countries_v2("resources/ListOfCountryNamesByName.json");
@@ -635,7 +635,7 @@ function load_provincias_v2() {
 }
 
 function load_provincias_v1() { //provinciasypoblaciones.xml - xpath
-    $.get( "module/products/controller/controller_products.php?load_provincias=true",
+    $.get( "index.php?module=products&function=load_provincias_products&load_provincias=true",
         function( response ) {
             $("#made_in_province").empty();
 	          $("#made_in_province").append('<option value="" selected="selected">Selecciona una Provincia</option>');
@@ -672,7 +672,7 @@ function load_poblaciones_v2(prov) {
 
 function load_poblaciones_v1(prov) { //provinciasypoblaciones.xml - xpath
     var datos = { idPoblac : prov  };
-	$.post("module/products/controller/controller_products.php?", datos, function(response) {
+	$.post("index.php?module=products&function=load_poblacion_products", datos, function(response) {
 	  //alert(response);
     var json = JSON.parse(response);
 		var poblaciones=json.poblaciones;

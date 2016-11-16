@@ -1,11 +1,11 @@
 <?php
 
-class productsDAO {
+class products_dao {
 
     static $_instance;
 
     private function __construct() {
-
+      
     }
 
     public static function getInstance() {
@@ -14,7 +14,7 @@ class productsDAO {
         return self::$_instance;
     }
 
-    public function create_products_DAO($db, $arrArgument) {
+    public function create_products_dao($db, $arrArgument) {
         $barcode = $arrArgument['barcode'];
         $name = $arrArgument['name'];
         $image = $arrArgument['image'];
@@ -62,7 +62,7 @@ class productsDAO {
         return $db->ejecutar($sql);
     }
 
-    public function obtain_paises_DAO($url) {
+    public function obtain_paises_dao($url) {
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $url);
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -73,7 +73,7 @@ class productsDAO {
         return ($file_contents) ? $file_contents : FALSE;
     }
 
-    public function obtain_provincias_DAO() {
+    public function obtain_provincias_dao() {
         $json = array();
         $tmp = array();
 
@@ -91,7 +91,7 @@ class productsDAO {
         return $json;
     }
 
-    public function obtain_poblaciones_DAO($arrArgument) {
+    public function obtain_poblaciones_dao($arrArgument) {
         $json = array();
         $tmp = array();
 
@@ -104,5 +104,73 @@ class productsDAO {
           array_push($json, $tmp);
         }
         return $json;
+    }
+
+    public function list_products_dao($db) {
+        $sql = "SELECT * FROM products";
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function details_products_dao($db,$id) {
+        $sql = "SELECT * FROM products WHERE barcode=".$id;
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function page_products_dao($db,$arrArgument) {
+        $position = $arrArgument['position'];
+        $item_per_page = $arrArgument['item_per_page'];
+        $sql = "SELECT * FROM products ORDER BY barcode ASC LIMIT ".$position." , ".$item_per_page;
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function total_products_dao($db) {
+        $sql = "SELECT COUNT(*) as total FROM products";
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function select_column_products_dao($db, $arrArgument) {
+        $sql = "SELECT " . $arrArgument . " FROM products ORDER BY " . $arrArgument;
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+    }
+
+    public function select_like_products_dao($db, $arrArgument) {
+        $column = $arrArgument['column'];
+        $like = $arrArgument['like'];
+        $sql = "SELECT DISTINCT * FROM products WHERE " . $column . " like '%" . $like . "%'";
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+    }
+
+     public function count_like_products_dao($db, $arrArgument) {
+         $column = $arrArgument['column'];
+         $like = $arrArgument['like'];
+        $sql = "SELECT COUNT(*) as total FROM products WHERE " . $column . " like '%" . $like . "%'";
+
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+    }
+
+    public function select_like_limit_products_dao($db, $arrArgument) {
+        $column = $arrArgument['column'];
+        $like = $arrArgument['like'];
+        $position = $arrArgument['position'];
+        $limit = $arrArgument['limit'];
+        $sql="SELECT DISTINCT * FROM products WHERE ". $column ." like '%". $like . "%' ORDER BY barcode ASC LIMIT ". $position ." , ". $limit;
+
+        $stmt=$db->ejecutar($sql);
+        return $db->listar($stmt);
     }
 }

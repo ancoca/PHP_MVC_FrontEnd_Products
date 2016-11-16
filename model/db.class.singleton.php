@@ -1,5 +1,5 @@
 <?php
-    class Db {
+    class db {
         private $servidor;
         private $usuario;
         private $password;
@@ -13,16 +13,11 @@
             $this->setConexion();
             $this->conectar();
         }
-        
+
         private function setConexion() {
-            require_once 'Conf.class.singleton.php';
-            $conf = Conf::getInstance();
-            /*
-            $this->servidor = $conf->getHostDB();
-            $this->base_datos = $conf->getDB();
-            $this->usuario = $conf->getUserDB();
-            $this->password = $conf->getPassDB();
-            */
+            require_once 'conf.class.singleton.php';
+            $conf = conf::getInstance();
+
             //Millora
             $this->servidor = $conf->_hostdb;
             $this->base_datos = $conf->_db;

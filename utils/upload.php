@@ -72,7 +72,7 @@ function upload_files() {
         */
 
     ////////////////////////////////////////////////////////////////////////////
-    $upfile = $_SERVER['DOCUMENT_ROOT'].'/media/'.$_FILES['file']['name'];
+    $upfile = MEDIA_PATH . $_FILES['file']['name'];
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
@@ -109,8 +109,8 @@ function upload_files() {
 //Elimina la imagen subida en dropzone.js antes de guardar definitivamente los datos
 function remove_files(){
 	$name = $_POST["filename"];
-	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/media/'.$_SESSION['nombreImagen'])){
-		unlink($_SERVER['DOCUMENT_ROOT'].'/media/'.$_SESSION['nombreImagen']);
+	if(file_exists(MEDIA_PATH . $_SESSION['nombreImagen'])){
+		unlink(MEDIA_PATH . $_SESSION['nombreImagen']);
 		return true;
 	}else{
 		return false;

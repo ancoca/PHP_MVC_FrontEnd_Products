@@ -5,13 +5,12 @@
 		echo "</pre><br>";
 		//die(); no va
 	}
-	
-	function debugChrome($array){
-	    include 'libs/chromephp-master/ChromePhp.php';
-		ChromePhp::warn($array);
-	}
-	
+
 	function redirect($url){
 		die('<script>top.location.href="'.$url .'";</script>');
 	}
 
+	function close_session() {
+		$_SESSION = array (); // Destruye todas las variables de la sesión
+		session_destroy(); // Destruye la sesión
+	}

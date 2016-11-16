@@ -5,7 +5,7 @@ $("#details_prod").hide();
         var id = this.getAttribute('barcode');
         alert(id);
 
-        $.get("module/products_frontend/controller/controller_products_frontend.php?idProduct=" + id, function (data, status) {
+        $.get("index.php?module=products&function=list_details_products&idProduct=" + id, function (data, status) {
             var json = JSON.parse(data);
             var product = json.product;
             //alert(product.name);
@@ -47,9 +47,9 @@ $("#details_prod").hide();
                 .fail(function (xhr) {
                     //if  we already have an error 404
                     if (xhr.status === 404) {
-                        $("#results").load("module/products_frontend/controller/controller_products_frontend.php?view_error=false");
+                        $("#results").load("index.php?module=products&function=view_error_false&view_error=false");
                     } else {
-                        $("#results").load("module/products_frontend/controller/controller_products_frontend.php?view_error=true");
+                        $("#results").load("index.php?module=products&function=view_error_true&view_error=true");
                     }
 
                 });
